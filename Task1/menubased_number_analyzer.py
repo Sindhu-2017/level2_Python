@@ -130,13 +130,7 @@ while True :
             print("Invalid choice")
 
 
-# digits=calculateDigit(number)
-# print("Number of digits :" ,digits)
 
-# print("Product of digits :" ,productDigit(number))
-# reversed = reverse(number)
-
-# print(number ,"is an",oddEvenCheck(number) ,"number")
 
 
 
