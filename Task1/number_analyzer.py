@@ -40,11 +40,41 @@ def reverse(n):
         n = n // 10
     return rev
 
+def oddEvenCheck(n):
+    if n % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
 
+def palindromeCheck(n,rev):
+    if n == rev:
+        return "a palidrome"
+    else:
+        return "not a palindrome"
+
+def armstrongCheck(n,count):
+    temp = n
+    sum = 0
+    while (temp > 0):
+        rem = temp % 10
+        sum += rem ** count
+        temp = temp // 10
+
+    if sum == n:
+        return "an Armstrong"
+    else :
+        return "not an Armstrong"
 
 number = int(input ("Enter the number :"))
-print("Number of digits :" ,calculateDigit(number))
+digits=calculateDigit(number)
+print("Number of digits :" ,digits)
 print("Sum of digits :" ,sumDigit(number))
 print("Product of digits :" ,productDigit(number))
-print("Reversed :" ,reverse(number))
+reversed = reverse(number)
+print("Reversed :" ,reversed)
+print(number ,"is an",oddEvenCheck(number) ,"number")
+print(number ,"is",palindromeCheck(number,reversed) ,"number")
+print(number,"is",armstrongCheck(number,digits),"number")
+
+
 
