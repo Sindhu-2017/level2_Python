@@ -4,6 +4,7 @@ from utils.employee import *
 from utils.salary import *
 from utils.salary_report import *
 from pathlib import Path
+from datetime import date
 
 load_dotenv()
 employee_file =Path(os.getenv("EMPLOYEE_FILE"))
@@ -11,12 +12,13 @@ salary_file = Path(os.getenv("SALARY_FILE"))
 
 while True:
     print ("\n1-Display Employees")
-    print ("2-Update Salary")
-    print ("3-Display Employee with High Salary ")
-    print ("4-Display Salary Report")
-    print("5 -Check files exists or not")
-    print ("6-Display File Information")
-    print ("7-Exit")
+    print("2-Add New Salary Record")
+    print ("3-Update Salary")
+    print ("4-Display Employee with High Salary ")
+    print ("5-Display Salary Report")
+    print("6-Check files exists or not")
+    print ("7-Display File Information")
+    print ("8-Exit")
     choice = input ("Enter your choice :")
 
     match choice :
@@ -26,8 +28,31 @@ while True:
             for employee in employee_data :
                 print(f"ID : {employee["employee_id"]} - {employee["employee_name"]} - {employee["department"]} experience :{employee["experience"]}")
 
-
         case "2":
+            print("2-Add Employee")
+            emp_id=int(input("Enter employee ID :"))
+            basic_salary = float(input("Enter the basic salary :"))
+            hra =float(input("Enter the HRA"))
+            da = float (input("Enter the DA"))
+            bonus = float (input("Enter the Bonus"))
+            updated_date = date.today().isoformat()
+
+            net_salary=calculate_netsalary(basic_salary,hra,da,bonus)
+            new_salary_data={
+                "emplo_id":emp_id,
+                "basic_salary":basic_salary,
+                "hra":hra,
+                "da":da,
+                "bonus":bonus,
+                "net_salary":net_salary,
+                "updated_date":updated_date
+            }
+
+            
+            add_salary(salary_file,new_salary_data)
+
+
+        case "3":
             print("2-Update Basic Salary")
             try:
                 employee_id = int(input("Enter the Employee ID :"))
@@ -37,7 +62,7 @@ while True:
             except ValueError:
                 print("Enter valid numbers")
 
-        case "3":
+        case "4":
             print("3-Display Employee with High Salary")
             high_salary_employee = get_high_salary_employee(employee_file,salary_file)
             print(f"ID : {high_salary_employee['employee_id']} - {high_salary_employee['employee_name']} - {high_salary_employee['department']} experience :{high_salary_employee['experience']}")
@@ -47,7 +72,7 @@ while True:
             print(f"Bonus :{high_salary_employee["bonus"]}")
             print(f"Net Salary :{high_salary_employee["net_salary"]}")
 
-        case "4":
+        case "5":
             print ("4-Display Salary Report")
             salary_report = display_salary_report(employee_file,salary_file)
             for report in salary_report:
@@ -60,7 +85,7 @@ while True:
 
                 print("_" * 40)
 
-        case "5":
+        case "6":
             print("5 -Check files exists or not")
             if employee_file.exists():
                 print("Employee file exists")
@@ -72,7 +97,7 @@ while True:
             else:
                 print("Salary file does not exists")
 
-        case "6":
+        case "7":
             print ("6-Display File Information")
             print ("Employee File Details :")
             print("_" * 40)
@@ -89,7 +114,7 @@ while True:
             print(f"Full Path : {salary_file.resolve()}")
 
 
-        case "7":
+        case "8":
             print("Exiting...")
             break
 
