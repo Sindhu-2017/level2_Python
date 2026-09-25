@@ -1,0 +1,42 @@
+[
+    {
+        "employee_id": 101,
+        "basic_salary": 30000,
+        "hra": 5000,
+        "da": 3000,
+        "bonus": 2000,
+        "net_salary": 40000
+    },
+    {
+        "employee_id": 102,
+        "basic_salary": 34000.0,
+        "hra": 7000,
+        "da": 4000,
+        "bonus": 3000,
+        "net_salary": 54000
+    },
+    {
+        "employee_id": 103,
+        "basic_salary": 35000,
+        "hra": 6000,
+        "da": 3500,
+        "bonus": 2500,
+        "net_salary": 47000
+    },
+    {
+        "employee_id": 104,
+        "basic_salary": 28000,
+        "hra": 4500,
+        "da": 2500,
+        "bonus": 1500,
+        "net_salary": 36500
+    },
+    {
+        "employee_id": 105,
+        "basic_salary": 50000,
+        "hra": 8000,
+        "da": 5000,
+        "bonus": 5000,
+        "net_salary": 68000
+    }
+]
