@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-
-# Common payment contract
 class PaymentMethod(ABC):
 
     @abstractmethod
@@ -42,11 +40,8 @@ class PaymentProcessor:
     def process(self, payment_method, amount):
         payment_method.pay(amount)
 
-
-# Create processor
 processor = PaymentProcessor()
 
-# Different payment methods
 processor.process(CardPayment(), 5000)
 processor.process(UpiPayment(), 2000)
 processor.process(WalletPayment(), 1000)

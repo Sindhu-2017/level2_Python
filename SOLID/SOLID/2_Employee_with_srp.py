@@ -36,21 +36,16 @@ class EmailService:
         print(f"Salary slip sent to {employee.name}")
 
 
-# Create employee
 employee = Employee("Ravi", 30000)
 
-# Calculate salary
 calculator = SalaryCalculator()
 salary = calculator.calculate_salary(employee)
 
-# Save employee
 repository = EmployeeRepository()
 repository.save(employee)
 
-# Generate salary slip
 slip = SalarySlipGenerator()
 slip.generate(employee, salary)
 
-# Send email
 email = EmailService()
 email.send(employee)

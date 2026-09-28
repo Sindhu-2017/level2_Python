@@ -5,7 +5,8 @@
         "hra": 5000,
         "da": 3000,
         "bonus": 2000,
-        "net_salary": 40000
+        "net_salary": 40000,
+        "updated_date": "2026-09-25"
     },
     {
         "employee_id": 102,
@@ -13,7 +14,8 @@
         "hra": 7000,
         "da": 4000,
         "bonus": 3000,
-        "net_salary": 54000
+        "net_salary": 54000,
+        "updated_date": "2026-09-25"
     },
     {
         "employee_id": 103,
@@ -21,7 +23,8 @@
         "hra": 6000,
         "da": 3500,
         "bonus": 2500,
-        "net_salary": 47000
+        "net_salary": 47000,
+        "updated_date": "2026-09-25"
     },
     {
         "employee_id": 104,
@@ -29,7 +32,8 @@
         "hra": 4500,
         "da": 2500,
         "bonus": 1500,
-        "net_salary": 36500
+        "net_salary": 36500,
+        "updated_date": "2026-09-25"
     },
     {
         "employee_id": 105,
@@ -37,10 +41,11 @@
         "hra": 8000,
         "da": 5000,
         "bonus": 5000,
-        "net_salary": 68000
+        "net_salary": 68000,
+        "updated_date": "2026-09-25"
     },
     {
-        "emplo_id": 102,
+        "employee_id": 102,
         "basic_salary": 23000.0,
         "hra": 2300.0,
         "da": 400.0,

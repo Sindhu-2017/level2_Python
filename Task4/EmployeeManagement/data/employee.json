@@ -1,0 +1,37 @@
+[
+    {
+        "employee_id": 101,
+        "employee_name": "Arun",
+        "department": "QA",
+        "designation": "QA Engineer",
+        "experience": 2
+    },
+    {
+        "employee_id": 102,
+        "employee_name": "Priya",
+        "department": "Development",
+        "designation": "Python Developer",
+        "experience": 3
+    },
+    {
+        "employee_id": 103,
+        "employee_name": "Rahul",
+        "department": "Testing",
+        "designation": "Automation Tester",
+        "experience": 4
+    },
+    {
+        "employee_id": 104,
+        "employee_name": "Divya S",
+        "department": "HR",
+        "designation": "HR Executive",
+        "experience": 2
+    },
+    {
+        "employee_id": 105,
+        "employee_name": "Karthik M",
+        "department": "Development",
+        "designation": "Backend Developer",
+        "experience": 5
+    }
+]
