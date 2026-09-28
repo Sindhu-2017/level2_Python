@@ -1,8 +1,13 @@
 import json
+from dataclasses import dataclass
+
+@dataclass
 class SalaryReport:
-    def __init__(self,employee_file,salary_file):
-        self.employee_file = employee_file
-        self.salary_file = salary_file
+    # def __init__(self,employee_file,salary_file):
+    #     self.employee_file = employee_file
+    #     self.salary_file = salary_file
+    employee_file :str
+    salary_file:str
 
     def get_report(self) -> list[dict]:
         try:
@@ -34,7 +39,7 @@ class SalaryReport:
 
                         salary_report.append(report)
                         break
-                    
+
             return salary_report
 
         except FileNotFoundError:
