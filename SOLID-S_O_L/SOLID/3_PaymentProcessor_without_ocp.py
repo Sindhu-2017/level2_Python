@@ -10,6 +10,8 @@ class PaymentProcessor:
 
         elif payment_type == "wallet":
             print(f"Processing Wallet payment of ₹{amount}")
+        elif payment_type == "netbanking":
+            print("Processing Net Banking")
 
 
 processor = PaymentProcessor()
@@ -19,5 +21,3 @@ processor.process_payment("upi", 2000)
 processor.process_payment("wallet", 1000)
 
 
-# elif payment_type == "netbanking":
-#     print("Processing Net Banking")

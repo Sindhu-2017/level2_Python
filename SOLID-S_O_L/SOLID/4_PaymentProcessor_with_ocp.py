@@ -28,10 +28,10 @@ class WalletPayment(PaymentMethod):
         print(f"Processing Wallet payment of ₹{amount}")
 
 # NEW PAYMENT METHOD
-# class NetBankingPayment(PaymentMethod):
+class NetBankingPayment(PaymentMethod):
 
-#     def pay(self, amount):
-#         print(f"Processing Net Banking payment of ₹{amount}")
+    def pay(self, amount):
+        print(f"Processing Net Banking payment of ₹{amount}")
 
 
 # Payment processor
