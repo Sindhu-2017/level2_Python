@@ -5,7 +5,6 @@ def test_calculate_hra():
     result = salary_service.calculate_hra(30000)
     assert result == 6000
 
-
 def test_calculate_da():
     salary_service = SalaryService(None)
     result = salary_service.calculate_da(30000)
