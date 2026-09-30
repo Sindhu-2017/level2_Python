@@ -1,16 +1,24 @@
-from config import EMPLOYEE_FILE,SALARY_FILE
-from utils.get_employees import EmployeeManager
-from utils.salary_operations import SalaryManager
-from utils.salary_report import SalaryReport
-from utils.employee_operations import EmployeeOperations
-from datetime import date
+from config import EMPLOYEE_FILE, SALARY_FILE
 
-employee_manager = EmployeeManager(EMPLOYEE_FILE)
-salary_manager = SalaryManager(SALARY_FILE)
-salary_report = SalaryReport(EMPLOYEE_FILE,SALARY_FILE)
+from repositories.employee_repository import EmployeeRepository
+from repositories.salary_repository import SalaryRepository
+from services.employee_service import EmployeeService
+from services.salary_service import SalaryService
+from services.report_service import ReportService
+from utilities.employee_operations import EmployeeOperations
 
+from exceptions.custom_exceptions import (EmployeeNotFoundError,InvalidSalaryError,DataFileError)
+
+
+employee_repository = EmployeeRepository(EMPLOYEE_FILE)
+salary_repository = SalaryRepository(SALARY_FILE)
+
+employee_service = EmployeeService(employee_repository)
+salary_service = SalaryService(salary_repository)
+report_service = ReportService(employee_repository,salary_repository)
 
 while True:
+
     print("\nEMPLOYEE MANAGEMENT SYSTEM")
     print("1.Display Employees")
     print("2.Add New Salary Record")
@@ -22,126 +30,117 @@ while True:
     print("8.Search Employees by Department")
     print("9.Check Salary Condition")
     print("10.Exit")
+
     choice = input("Enter your choice: ")
 
-    match choice:
-        case "1":
-            employees = employee_manager.get_employees()
-            if employees:
-                analytics = EmployeeOperations(employees)
-                analytics.display_employees()
-            else:
-                print("No employee records found.")
+    try:
+        match choice:
+            case "1":
+                employees = employee_service.get_employees()
 
-        case "2":
-            try:
+                if employees:
+                    EmployeeOperations(employees).display_employees()
+                else:
+                    print("No employee records found...")
+
+            case "2":
                 employee_id = int(input("Enter employee ID: "))
-                employees = employee_manager.get_employees()
+                employee_service.check_employee(employee_id)
 
-                if not any(employee["employee_id"] == employee_id for employee in employees):
-                    print("Employee ID does not exist.")
-                    continue
                 basic_salary = float(input("Enter basic salary: "))
+                salary = salary_service.add_salary(employee_id,basic_salary)
+                print(f"HRA : {salary['hra']}")
+                print(f"DA : {salary['da']}")
+                print(f"Bonus : {salary['bonus']}")
+                print(f"Net Salary : {salary['net_salary']}")
 
-                hra = salary_manager.calculate_hra(basic_salary)
-                da = salary_manager.calculate_da(basic_salary)
-                bonus = salary_manager.calculate_bonus(basic_salary)
-                net_salary = salary_manager.calculate_netsalary(basic_salary,hra,da,bonus)
+            case "3":
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                employee = emp_operations.get_highest_salary_employee()
 
-                updated_date = date.today().isoformat()
+                if employee:
+                    print(f"Name : {employee['employee_name']}")
+                    print(f"Department : {employee['department']}")
+                    print(f"Salary : {employee['net_salary']}")
+                else:
+                    print("No salary records found.")
 
-                new_salary_data = {
-                    "employee_id": employee_id,
-                    "basic_salary": basic_salary,
-                    "hra": hra,
-                    "da": da,
-                    "bonus": bonus,
-                    "net_salary": net_salary,
-                    "updated_date": updated_date
-                }
+            case "4":
+                reports = report_service.get_report()
+                if reports:
+                    for number, report in enumerate(reports, start=1):
+                        print(
+                            f"\n{number}. "
+                            f"ID : {report['employee_id']} - "
+                            f"{report['employee_name']} - "
+                            f"{report['department']}"
+                        )
 
-                salary_manager.add_salary(new_salary_data)
-                print(f"HRA : {hra}")
-                print(f"DA : {da}")
-                print(f"Bonus : {bonus}")
-                print(f"Net Salary : {net_salary}")
+                        print(f"Designation : {report['designation']}")
+                        print(f"Experience : {report['experience']}")
+                        print(f"Basic Salary : {report['basic_salary']}")
+                        print(f"HRA : {report['hra']}")
+                        print(f"DA : {report['da']}")
+                        print(f"Bonus : {report['bonus']}")
+                        print(f"Net Salary : {report['net_salary']}")
+                        print(f"Updated Date : {report['updated_date']}")
+                        print("_" * 40)
 
-            except ValueError:
-                print("Enter valid numbers.")
+                else:
+                    print("No salary records found.")
 
+            case "5":
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                for department in emp_operations.get_departments():
+                    print(department)
 
-        case "3":
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
-            employee = analytics.get_highest_salary_employee()
+            case "6":
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                sorted_employees = emp_operations.sort_by_salary()
+                EmployeeOperations(sorted_employees).display_employees()
 
-            if employee:
-                print(f"Name : {employee['employee_name']}")
-                print(f"Department : {employee['department']}")
-                print(f"Salary : {employee['net_salary']}")
-            else:
-                print("No salary records found.")
+            case "7":
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                sorted_employees = emp_operations.sort_by_experience()
+                EmployeeOperations(sorted_employees).display_employees()
 
+            case "8":
+                department = input("Enter department: ")
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                result = emp_operations.get_department_employees(department)
 
-        case "4":
-            reports = salary_report.get_report()
-            if reports:
-                for number,report in enumerate(reports,start=1):
-                    print(f"\n{number}. ID : {report['employee_id']} - {report['employee_name']} - {report['department']}")
-                    print(f"Designation : {report['designation']}")
-                    print(f"Experience : {report['experience']}")
-                    print(f"Basic Salary : {report['basic_salary']}")
-                    print(f"HRA : {report['hra']}")
-                    print(f"DA : {report['da']}")
-                    print(f"Bonus : {report['bonus']}")
-                    print(f"Net Salary : {report['net_salary']}")
-                    print(f"Updated Date : {report['updated_date']}")
-                    print("_" * 40)
-            else:
-                print("No salary records found")
+                if result:
+                    EmployeeOperations(result).display_employees()
+                else:
+                    print("No employees found.")
 
-        case "5":
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
-            departments = analytics.get_departments()
+            case "9":
 
-            for department in departments:
-                print(department)
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                emp_operations.check_salary_condition()
 
-        case "6":
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
-            sorted_employees = analytics.sort_by_salary()
-            EmployeeOperations(sorted_employees).display_employees()
+            case "10":
+                print("Exiting...")
+                break
 
-        case "7":
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
-            sorted_employees = analytics.sort_by_experience()
-            EmployeeOperations(sorted_employees).display_employees()
+            case _:
 
+                print("Invalid choice.")
 
-        case "8":
-            department = input("Enter department: ")
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
+    except ValueError:
+        print("Enter valid numbers.")
 
-            result = analytics.get_department_employees(department)
-            if result:
-                EmployeeOperations(result).display_employees()
-            else:
-                print("No employees found.")
+    except EmployeeNotFoundError as error:
+        print(error)
 
-        case "9":
-            employees = salary_report.get_report()
-            analytics = EmployeeOperations(employees)
-            analytics.check_salary_condition()
+    except InvalidSalaryError as error:
+        print(error)
 
-
-        case "10":
-            print("Exiting...")
-            break
-
-
-        case _:
-            print("Invalid choice.")
+    except DataFileError as error:
+        print(error)

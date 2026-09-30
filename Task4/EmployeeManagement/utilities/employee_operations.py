@@ -42,3 +42,5 @@ class EmployeeOperations:
 
         print("All employees have salary above 30000:",all(salary > 30000 for salary in salaries))
         print("At least one employee has salary above 60000:",any(salary > 60000 for salary in salaries))
+
+

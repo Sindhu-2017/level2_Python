@@ -79,5 +79,14 @@
         "bonus": 2800.0,
         "net_salary": 75600.0,
         "updated_date": "2026-09-29"
+    },
+    {
+        "employee_id": 104,
+        "basic_salary": 36000.0,
+        "hra": 7200.0,
+        "da": 3600.0,
+        "bonus": 1800.0,
+        "net_salary": 48600.0,
+        "updated_date": "2026-09-30"
     }
 ]
