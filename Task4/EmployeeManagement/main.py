@@ -18,7 +18,6 @@ salary_service = SalaryService(salary_repository)
 report_service = ReportService(employee_repository,salary_repository)
 
 while True:
-
     print("\nEMPLOYEE MANAGEMENT SYSTEM")
     print("1.Display Employees")
     print("2.Add New Salary Record")
@@ -144,3 +143,6 @@ while True:
 
     except DataFileError as error:
         print(error)
+
+    finally:
+        print("Program executed successfully...")
