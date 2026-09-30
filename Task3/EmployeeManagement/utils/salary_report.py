@@ -2,45 +2,49 @@ import json
 from pathlib import Path
 
 
-def display_salary_report(
+def get_report(
     employee_file: Path,
     salary_file: Path
 ) -> list[dict]:
 
     try:
         with open(employee_file, "r") as file:
-            employee_data = json.load(file)
+            employee_data: list[dict] = json.load(file)
 
         with open(salary_file, "r") as file:
-            salary_data = json.load(file)
+            salary_data: list[dict] = json.load(file)
 
-        salary_lookup = {
-            salary["employee_id"]: salary
-            for salary in salary_data
-        }
-
-        salary_report = []
+        salary_report: list[dict] = []
 
         for employee in employee_data:
 
-            salary = salary_lookup.get(
-                employee["employee_id"]
-            )
+            latest_salary: dict | None = None
 
-            if salary:
+            for salary in salary_data:
 
-                report = {
+                if employee["employee_id"] == salary["employee_id"]:
+
+                    if (
+                        latest_salary is None
+                        or salary["updated_date"]
+                        > latest_salary["updated_date"]
+                    ):
+                        latest_salary = salary
+
+            if latest_salary:
+
+                report: dict = {
                     "employee_id": employee["employee_id"],
                     "employee_name": employee["employee_name"],
                     "department": employee["department"],
                     "designation": employee["designation"],
                     "experience": employee["experience"],
-                    "basic_salary": salary["basic_salary"],
-                    "hra": salary["hra"],
-                    "da": salary["da"],
-                    "bonus": salary["bonus"],
-                    "net_salary": salary["net_salary"],
-                    "updated_date": salary["updated_date"]
+                    "basic_salary": latest_salary["basic_salary"],
+                    "hra": latest_salary["hra"],
+                    "da": latest_salary["da"],
+                    "bonus": latest_salary["bonus"],
+                    "net_salary": latest_salary["net_salary"],
+                    "updated_date": latest_salary["updated_date"]
                 }
 
                 salary_report.append(report)

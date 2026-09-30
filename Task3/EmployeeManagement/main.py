@@ -1,63 +1,112 @@
 from dotenv import load_dotenv
 import os
-from utils.employee import *
-from utils.salary import *
-from utils.salary_report import *
-from utils.analytics import *
 from pathlib import Path
 from datetime import date
 
+from utils.employee import get_employees
+
+from utils.salary import (
+    calculate_hra,
+    calculate_da,
+    calculate_bonus,
+    calculate_net_salary,
+    add_salary
+)
+
+from utils.salary_report import get_report
+
+from utils.analytics import (
+    display_employees,
+    get_highest_salary_employee,
+    get_departments,
+    sort_by_salary,
+    sort_by_experience,
+    get_department_employees,
+    get_experienced_employees,
+    calculate_average_salary,
+    check_salary_condition
+)
+
+
 load_dotenv()
 
-employee_file =Path(os.getenv("EMPLOYEE_FILE"))
-salary_file = Path(os.getenv("SALARY_FILE"))
+employee_file: Path = Path(
+    os.getenv("EMPLOYEE_FILE", "")
+)
+
+salary_file: Path = Path(
+    os.getenv("SALARY_FILE", "")
+)
+
 
 while True:
 
     print("\nEMPLOYEE MANAGEMENT SYSTEM")
-    print("1.Display Employees")
-    print("2.Add New Salary Record")
-    print("3.Display Highest Salary Employee")
-    print("4.Display Salary Report")
-    print("5.Display Departments")
-    print("6.Sort Employees by Salary")
-    print("7.Sort Employees by Experience")
-    print("8.Search Employees by Department")
-    print("9.Display Experienced Employees")
-    print("10.Display Average Salary")
-    print("11.Check Salary Condition")
-    print("12.Check Files Exists")
-    print("13.Display File Information")
-    print("14.Exit")
+    print("1. Display Employees")
+    print("2. Add New Salary Record")
+    print("3. Display Highest Salary Employee")
+    print("4. Display Salary Report")
+    print("5. Display Departments")
+    print("6. Sort Employees by Salary")
+    print("7. Sort Employees by Experience")
+    print("8. Search Employees by Department")
+    print("9. Display Experienced Employees")
+    print("10. Display Average Salary")
+    print("11. Check Salary Condition")
+    print("12. Exit")
 
-    choice = input("Enter your choice: ")
+    choice: str = input("Enter your choice: ")
 
     match choice:
 
         case "1":
 
-            employees = display_employees(employee_file)
+            employees: list[dict] = get_employees(
+                employee_file
+            )
 
             if employees:
-                display_employee_list(employees)
+                display_employees(employees)
             else:
                 print("No employee records found.")
 
         case "2":
 
             try:
-                employee_id = int(input("Enter employee ID: "))
-                basic_salary = float(input("Enter basic salary: "))
-                experience = int(input("Enter experience: "))
 
-                hra = calculate_hra(basic_salary)
-                da = calculate_da(basic_salary)
-                bonus = calculate_bonus(basic_salary, experience)
-                net_salary = calculate_netsalary(basic_salary, experience)
+                employee_id: int = int(
+                    input("Enter employee ID: ")
+                )
 
-                updated_date = date.today().isoformat()
+                employees: list[dict] = get_employees(
+                    employee_file
+                )
 
-                new_salary_data = {
+                if not any(
+                    employee["employee_id"] == employee_id
+                    for employee in employees
+                ):
+                    print("Employee ID does not exist.")
+                    continue
+
+                basic_salary: float = float(
+                    input("Enter basic salary: ")
+                )
+
+                hra: float = calculate_hra(basic_salary)
+                da: float = calculate_da(basic_salary)
+                bonus: float = calculate_bonus(basic_salary)
+
+                net_salary: float = calculate_net_salary(
+                    basic_salary,
+                    hra,
+                    da,
+                    bonus
+                )
+
+                updated_date: str = date.today().isoformat()
+
+                new_salary_data: dict = {
                     "employee_id": employee_id,
                     "basic_salary": basic_salary,
                     "hra": hra,
@@ -67,7 +116,10 @@ while True:
                     "updated_date": updated_date
                 }
 
-                add_salary(salary_file, new_salary_data)
+                add_salary(
+                    salary_file,
+                    new_salary_data
+                )
 
                 print(f"HRA : {hra}")
                 print(f"DA : {da}")
@@ -75,39 +127,35 @@ while True:
                 print(f"Net Salary : {net_salary}")
 
             except ValueError:
+
                 print("Enter valid numbers.")
 
         case "3":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            high_salary_employee = get_highest_salary_employee(
+            employee: dict | None = get_highest_salary_employee(
                 employees
             )
 
-            if high_salary_employee:
+            if employee:
 
                 print(
-                    f"ID : {high_salary_employee['employee_id']} - "
-                    f"{high_salary_employee['employee_name']}"
+                    f"Name : "
+                    f"{employee['employee_name']}"
                 )
 
                 print(
                     f"Department : "
-                    f"{high_salary_employee['department']}"
+                    f"{employee['department']}"
                 )
 
                 print(
-                    f"Basic Salary : "
-                    f"{high_salary_employee['basic_salary']}"
-                )
-
-                print(
-                    f"Net Salary : "
-                    f"{high_salary_employee['net_salary']}"
+                    f"Salary : "
+                    f"{employee['net_salary']}"
                 )
 
             else:
@@ -115,7 +163,7 @@ while True:
 
         case "4":
 
-            reports = display_salary_report(
+            reports: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
@@ -129,7 +177,7 @@ while True:
 
                     print(
                         f"\n{number}. "
-                        f"ID: {report['employee_id']} - "
+                        f"ID : {report['employee_id']} - "
                         f"{report['employee_name']} - "
                         f"{report['department']}"
                     )
@@ -150,15 +198,18 @@ while True:
                     )
 
                     print(
-                        f"HRA : {report['hra']}"
+                        f"HRA : "
+                        f"{report['hra']}"
                     )
 
                     print(
-                        f"DA : {report['da']}"
+                        f"DA : "
+                        f"{report['da']}"
                     )
 
                     print(
-                        f"Bonus : {report['bonus']}"
+                        f"Bonus : "
+                        f"{report['bonus']}"
                     )
 
                     print(
@@ -174,16 +225,16 @@ while True:
                     print("_" * 40)
 
             else:
-                print("No salary records found.")
+                print("No salary records found")
 
         case "5":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            departments = get_departments(
+            departments: set[str] = get_departments(
                 employees
             )
 
@@ -192,52 +243,52 @@ while True:
 
         case "6":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            sorted_employees = sort_by_salary(
+            sorted_employees: list[dict] = sort_by_salary(
                 employees
             )
 
-            display_employee_list(
+            display_employees(
                 sorted_employees
             )
 
         case "7":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            sorted_employees = sort_by_experience(
+            sorted_employees: list[dict] = sort_by_experience(
                 employees
             )
 
-            display_employee_list(
+            display_employees(
                 sorted_employees
             )
 
         case "8":
 
-            department = input(
+            department: str = input(
                 "Enter department: "
             )
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            result = get_department_employees(
+            result: list[dict] = get_department_employees(
                 employees,
                 department
             )
 
             if result:
-                display_employee_list(result)
+                display_employees(result)
             else:
                 print("No employees found.")
 
@@ -245,22 +296,24 @@ while True:
 
             try:
 
-                minimum_experience = int(
-                    input("Enter minimum experience: ")
+                minimum_experience: int = int(
+                    input(
+                        "Enter minimum experience: "
+                    )
                 )
 
-                employees = display_salary_report(
+                employees: list[dict] = get_report(
                     employee_file,
                     salary_file
                 )
 
-                result = get_experienced_employees(
+                result: list[dict] = get_experienced_employees(
                     employees,
                     minimum_experience
                 )
 
                 if result:
-                    display_employee_list(result)
+                    display_employees(result)
                 else:
                     print("No employees found.")
 
@@ -269,12 +322,12 @@ while True:
 
         case "10":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
 
-            average_salary = calculate_average_salary(
+            average_salary: float = calculate_average_salary(
                 employees
             )
 
@@ -285,7 +338,7 @@ while True:
 
         case "11":
 
-            employees = display_salary_report(
+            employees: list[dict] = get_report(
                 employee_file,
                 salary_file
             )
@@ -295,34 +348,6 @@ while True:
             )
 
         case "12":
-
-            if employee_file.exists():
-                print("Employee file exists.")
-            else:
-                print("Employee file does not exist.")
-
-            if salary_file.exists():
-                print("Salary file exists.")
-            else:
-                print("Salary file does not exist.")
-
-        case "13":
-
-            print("\nEmployee File Information")
-            print("_" * 30)
-            print(f"File Name : {employee_file.name}")
-            print(f"Parent : {employee_file.parent}")
-            print(f"Suffix : {employee_file.suffix}")
-            print(f"Full Path : {employee_file.resolve()}")
-
-            print("\nSalary File Information")
-            print("_" * 30)
-            print(f"File Name : {salary_file.name}")
-            print(f"Parent : {salary_file.parent}")
-            print(f"Suffix : {salary_file.suffix}")
-            print(f"Full Path : {salary_file.resolve()}")
-
-        case "14":
 
             print("Exiting...")
             break

@@ -1,7 +1,14 @@
-def display_employee_list(employees: list[dict]) -> None:
+def display_employees(employees: list[dict]) -> None:
 
     for number, employee in enumerate(employees, start=1):
-        print(f"{number}. ID: {employee['employee_id']} - {employee['employee_name']} - {employee['department']} - Experience: {employee['experience']}")
+
+        print(
+            f"{number}. "
+            f"ID: {employee['employee_id']} - "
+            f"{employee['employee_name']} - "
+            f"{employee['department']} - "
+            f"Experience: {employee['experience']}"
+        )
 
 
 def get_departments(employees: list[dict]) -> set[str]:
@@ -10,19 +17,6 @@ def get_departments(employees: list[dict]) -> set[str]:
         employee["department"]
         for employee in employees
     }
-
-
-def get_highest_salary_employee(
-    employees: list[dict]
-) -> dict | None:
-
-    if not employees:
-        return None
-
-    return max(
-        employees,
-        key=lambda employee: employee["net_salary"]
-    )
 
 
 def sort_by_salary(employees: list[dict]) -> list[dict]:
@@ -40,6 +34,19 @@ def sort_by_experience(employees: list[dict]) -> list[dict]:
         employees,
         key=lambda employee: employee["experience"],
         reverse=True
+    )
+
+
+def get_highest_salary_employee(
+    employees: list[dict]
+) -> dict | None:
+
+    if not employees:
+        return None
+
+    return max(
+        employees,
+        key=lambda employee: employee["net_salary"]
     )
 
 
@@ -72,7 +79,7 @@ def calculate_average_salary(
 ) -> float:
 
     if not employees:
-        return 0
+        return 0.0
 
     return sum(
         employee["net_salary"]
@@ -84,7 +91,7 @@ def check_salary_condition(
     employees: list[dict]
 ) -> None:
 
-    salaries = [
+    salaries: list[float] = [
         employee["net_salary"]
         for employee in employees
     ]

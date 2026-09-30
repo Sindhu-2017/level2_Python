@@ -1,5 +1,4 @@
-from dotenv import load_dotenv
-import os
+from config import EMPLOYEE_FILE,SALARY_FILE
 from utils.employee import EmployeeManager
 from utils.salary import SalaryManager
 from utils.salary_report import SalaryReport
@@ -7,15 +6,9 @@ from utils.analytics import EmployeeAnalytics
 from pathlib import Path
 from datetime import date
 
-load_dotenv()
-
-employee_file = Path(os.getenv("EMPLOYEE_FILE"))
-salary_file = Path(os.getenv("SALARY_FILE"))
-
-
-employee_manager = EmployeeManager(employee_file)
-salary_manager = SalaryManager(salary_file)
-salary_report = SalaryReport(employee_file,salary_file)
+employee_manager = EmployeeManager(EMPLOYEE_FILE)
+salary_manager = SalaryManager(SALARY_FILE)
+salary_report = SalaryReport(EMPLOYEE_FILE,SALARY_FILE)
 
 
 while True:
@@ -28,10 +21,8 @@ while True:
     print("6.Sort Employees by Salary")
     print("7.Sort Employees by Experience")
     print("8.Search Employees by Department")
-    print("9.Display Experienced Employees")
-    print("10.Display Average Salary")
-    print("11.Check Salary Condition")
-    print("12.Exit")
+    print("9.Check Salary Condition")
+    print("10.Exit")
     choice = input("Enter your choice: ")
 
     match choice:
@@ -46,6 +37,11 @@ while True:
         case "2":
             try:
                 employee_id = int(input("Enter employee ID: "))
+                employees = employee_manager.get_employees()
+
+                if not any(employee["employee_id"] == employee_id for employee in employees):
+                    print("Employee ID does not exist.")
+                    continue
                 basic_salary = float(input("Enter basic salary: "))
 
                 hra = salary_manager.calculate_hra(basic_salary)
@@ -138,35 +134,12 @@ while True:
                 print("No employees found.")
 
         case "9":
-            try:
-                minimum_experience = int(input("Enter minimum experience: "))
-                employees = salary_report.get_report()
-                analytics = EmployeeAnalytics(employees)
-                result = analytics.get_experienced_employees(minimum_experience)
-
-                if result:
-                    EmployeeAnalytics(result).display_employees()
-                else:
-                    print("No employees found.")
-
-            except ValueError:
-                print("Enter valid experience.")
-
-
-        case "10":
-            employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
-            average_salary = analytics.calculate_average_salary()
-            print(f"Average Salary : {average_salary:.2f}")
-
-
-        case "11":
             employees = salary_report.get_report()
             analytics = EmployeeAnalytics(employees)
             analytics.check_salary_condition()
 
 
-        case "12":
+        case "10":
             print("Exiting...")
             break
 

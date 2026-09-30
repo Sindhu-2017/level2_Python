@@ -36,18 +36,6 @@ class EmployeeAnalytics:
     def get_department_employees(self,department: str) -> list[dict]:
         return [employee for employee in self.employees if employee["department"].lower() == department.lower()]
 
-    
-    # get experienced employees
-    def get_experienced_employees(self,minimum_experience: int) -> list[dict]:
-        return [employee for employee in self.employees if employee["experience"] >= minimum_experience]
-    
-    # calculating average salary
-    def calculate_average_salary(self) -> float:
-        if not self.employees:
-            return 0
-
-        return sum(employee["net_salary"] for employee in self.employees) / len(self.employees)
-    
     # checking salary condition
     def check_salary_condition(self) -> None:
         salaries = [employee["net_salary"] for employee in self.employees]

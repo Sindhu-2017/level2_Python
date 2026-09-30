@@ -2,10 +2,13 @@ import json
 from pathlib import Path
 
 
-def display_employees(employee_file: Path) -> list[dict]:
+def get_employees(employee_file: Path) -> list[dict]:
+
     try:
         with open(employee_file, "r") as file:
-            return json.load(file)
+            employee_data: list[dict] = json.load(file)
+
+        return employee_data
 
     except FileNotFoundError:
         print("File Not Found")
