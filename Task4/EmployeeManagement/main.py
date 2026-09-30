@@ -1,9 +1,8 @@
 from config import EMPLOYEE_FILE,SALARY_FILE
-from utils.employee import EmployeeManager
-from utils.salary import SalaryManager
+from utils.get_employees import EmployeeManager
+from utils.salary_operations import SalaryManager
 from utils.salary_report import SalaryReport
-from utils.analytics import EmployeeAnalytics
-from pathlib import Path
+from utils.employee_operations import EmployeeOperations
 from datetime import date
 
 employee_manager = EmployeeManager(EMPLOYEE_FILE)
@@ -29,7 +28,7 @@ while True:
         case "1":
             employees = employee_manager.get_employees()
             if employees:
-                analytics = EmployeeAnalytics(employees)
+                analytics = EmployeeOperations(employees)
                 analytics.display_employees()
             else:
                 print("No employee records found.")
@@ -73,7 +72,7 @@ while True:
 
         case "3":
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
             employee = analytics.get_highest_salary_employee()
 
             if employee:
@@ -103,7 +102,7 @@ while True:
 
         case "5":
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
             departments = analytics.get_departments()
 
             for department in departments:
@@ -111,31 +110,31 @@ while True:
 
         case "6":
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
             sorted_employees = analytics.sort_by_salary()
-            EmployeeAnalytics(sorted_employees).display_employees()
+            EmployeeOperations(sorted_employees).display_employees()
 
         case "7":
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
             sorted_employees = analytics.sort_by_experience()
-            EmployeeAnalytics(sorted_employees).display_employees()
+            EmployeeOperations(sorted_employees).display_employees()
 
 
         case "8":
             department = input("Enter department: ")
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
 
             result = analytics.get_department_employees(department)
             if result:
-                EmployeeAnalytics(result).display_employees()
+                EmployeeOperations(result).display_employees()
             else:
                 print("No employees found.")
 
         case "9":
             employees = salary_report.get_report()
-            analytics = EmployeeAnalytics(employees)
+            analytics = EmployeeOperations(employees)
             analytics.check_salary_condition()
 
 
