@@ -6,7 +6,6 @@ class SalaryRepository:
         self.salary_file = salary_file
 
     def get_all(self) -> list[dict]:
-
         try:
             with open(self.salary_file, "r") as file:
                 return json.load(file)
@@ -18,7 +17,6 @@ class SalaryRepository:
             raise DataFileError("Invalid salary JSON format.")
 
     def add(self, new_salary: dict) -> None:
-
         salary_data = self.get_all()
         salary_data.append(new_salary)
 
