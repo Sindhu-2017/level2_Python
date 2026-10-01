@@ -27,8 +27,9 @@ while True:
     print("6.Sort Employees by Salary")
     print("7.Sort Employees by Experience")
     print("8.Search Employees by Department")
-    print("9.Check Salary Condition")
-    print("10.Exit")
+    print("9.Display experienced employees")
+    print("10.Check Salary Condition")
+    print("11.Exit")
 
     choice = input("Enter your choice: ")
 
@@ -119,12 +120,22 @@ while True:
                     print("No employees found.")
 
             case "9":
+                experience = int(input("Enter experience  :"))
+                employees = report_service.get_report()
+                emp_operations = EmployeeOperations(employees)
+                result = emp_operations.get_experienced_employees(experience)
+                if result:
+                    EmployeeOperations(result).display_employees()
+                else:
+                    print("No employees found.")
+
+            case "10":
 
                 employees = report_service.get_report()
                 emp_operations = EmployeeOperations(employees)
                 emp_operations.check_salary_condition()
 
-            case "10":
+            case "11":
                 print("Exiting...")
                 break
 
