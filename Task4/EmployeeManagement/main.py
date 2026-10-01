@@ -29,7 +29,8 @@ while True:
     print("8.Search Employees by Department")
     print("9.Display experienced employees")
     print("10.Check Salary Condition")
-    print("11.Exit")
+    print("11.Download Salary Report")
+    print("12.Exit")
 
     choice = input("Enter your choice: ")
 
@@ -136,6 +137,16 @@ while True:
                 emp_operations.check_salary_condition()
 
             case "11":
+
+                reports = report_service.get_report()
+
+                if reports:
+                    report_service.save_report(reports)
+                    print("Salary report saved successfully.")
+                else:
+                    print("No salary records found.")
+
+            case "12":
                 print("Exiting...")
                 break
 

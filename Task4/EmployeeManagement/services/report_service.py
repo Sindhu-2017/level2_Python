@@ -34,3 +34,26 @@ class ReportService:
                 }
                 reports.append(report)
         return reports
+
+
+    def save_report(self, reports):
+
+        with open("salary_report.txt", "w") as file:
+
+            for number, report in enumerate(reports, start=1):
+
+                file.write(
+                    f"\n{number}. ID : {report['employee_id']} - "
+                    f"{report['employee_name']} - "
+                    f"{report['department']}\n"
+                )
+
+                file.write(f"Designation : {report['designation']}\n")
+                file.write(f"Experience : {report['experience']}\n")
+                file.write(f"Basic Salary : {report['basic_salary']}\n")
+                file.write(f"HRA : {report['hra']}\n")
+                file.write(f"DA : {report['da']}\n")
+                file.write(f"Bonus : {report['bonus']}\n")
+                file.write(f"Net Salary : {report['net_salary']}\n")
+                file.write(f"Updated Date : {report['updated_date']}\n")
+                file.write("_" * 40 + "\n")
