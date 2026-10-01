@@ -1,3 +1,4 @@
+from config import REPORT_FILE
 class ReportService:
 
     def __init__(self, employee_repository, salary_repository):
@@ -38,7 +39,7 @@ class ReportService:
 
     def save_report(self, reports):
 
-        with open("salary_report.txt", "w") as file:
+        with open(REPORT_FILE, "w") as file:
 
             for number, report in enumerate(reports, start=1):
 

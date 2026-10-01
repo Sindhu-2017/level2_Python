@@ -1,18 +1,19 @@
 from datetime import date
 from exceptions.custom_exceptions import InvalidSalaryError
+from config import (HRA_PERCENTAGE,DA_PERCENTAGE,BONUS_PERCENTAGE)
 class SalaryService:
 
     def __init__(self, salary_repository):
         self.salary_repository = salary_repository
 
     def calculate_hra(self, basic_salary: float) -> float:
-        return basic_salary * 0.20
+        return basic_salary * HRA_PERCENTAGE
 
     def calculate_da(self, basic_salary: float) -> float:
-        return basic_salary * 0.10
+        return basic_salary * DA_PERCENTAGE
 
     def calculate_bonus(self, basic_salary: float) -> float:
-        return basic_salary * 0.05
+        return basic_salary * BONUS_PERCENTAGE
 
     def calculate_net_salary(self,basic_salary: float,hra: float,da: float,bonus: float) -> float:
         return basic_salary + hra + da + bonus
