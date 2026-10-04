@@ -1,0 +1,55 @@
+
+1. ID : 101 - Arun - QA
+Designation : QA Engineer
+Experience : 2
+Basic Salary : 30000.0
+HRA : 6000.0
+DA : 3000.0
+Bonus : 1500.0
+Net Salary : 40500.0
+Updated Date : 2026-09-28
+________________________________________
+
+2. ID : 102 - Priya - Development
+Designation : Python Developer
+Experience : 3
+Basic Salary : 40000.0
+HRA : 8000.0
+DA : 4000.0
+Bonus : 2000.0
+Net Salary : 54000.0
+Updated Date : 2026-09-28
+________________________________________
+
+3. ID : 103 - Rahul - Testing
+Designation : Automation Tester
+Experience : 4
+Basic Salary : 50000.0
+HRA : 10000.0
+DA : 5000.0
+Bonus : 2500.0
+Net Salary : 67500.0
+Updated Date : 2026-09-28
+________________________________________
+
+4. ID : 104 - Divya S - HR
+Designation : HR Executive
+Experience : 2
+Basic Salary : 35000.0
+HRA : 7000.0
+DA : 3500.0
+Bonus : 1750.0
+Net Salary : 47250.0
+Updated Date : 2026-09-28
+________________________________________
+
+5. ID : 105 - Karthik M - Development
+Designation : Backend Developer
+Experience : 5
+Basic Salary : 23000.0
+HRA : 4600.0
+DA : 2300.0
+Bonus : 1150.0
+Net Salary : 31050.0
+Updated Date : 2026-10-04
+________________________________________
