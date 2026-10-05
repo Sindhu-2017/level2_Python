@@ -1,11 +1,12 @@
 import csv
+import asyncio
 from exceptions.custom_exceptions import DataFileError
 class SalaryRepository:
 
     def __init__(self, salary_file):
         self.salary_file = salary_file
 
-    def get_all(self) -> list[dict]:
+    async def get_all(self) -> list[dict]:
         try:
             with open(self.salary_file, "r", newline="") as file:
                 salaries = list(csv.DictReader(file))
@@ -23,8 +24,8 @@ class SalaryRepository:
         except FileNotFoundError:
             raise DataFileError("Salary file not found.")
 
-    def add(self, new_salary: dict) -> None:
-        salary_data = self.get_all()
+    async def add(self, new_salary: dict) -> None:
+        salary_data = await self.get_all()
         salary_data.append(new_salary)
         fieldnames = [
             "employee_id",

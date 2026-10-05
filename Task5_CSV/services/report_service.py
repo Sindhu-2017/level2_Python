@@ -1,14 +1,18 @@
 from config import REPORT_FILE
+import asyncio
 class ReportService:
 
     def __init__(self, employee_repository, salary_repository):
         self.employee_repository = employee_repository
         self.salary_repository = salary_repository
 
-    def get_report(self) -> list[dict]:
-        employees = self.employee_repository.get_all()
-        salaries = self.salary_repository.get_all()
-
+    async def get_report(self) -> list[dict]:
+        # employees = self.employee_repository.get_all()
+        # salaries = self.salary_repository.get_all()
+        employees , salaries = await asyncio.gather(
+            self.employee_repository.get_all(),
+            self.salary_repository.get_all()
+        )
         reports = []
 
         for employee in employees:
