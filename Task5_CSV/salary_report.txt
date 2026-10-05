@@ -13,12 +13,12 @@ ________________________________________
 2. ID : 102 - Priya - Development
 Designation : Python Developer
 Experience : 3
-Basic Salary : 40000.0
-HRA : 8000.0
-DA : 4000.0
-Bonus : 2000.0
-Net Salary : 54000.0
-Updated Date : 2026-09-28
+Basic Salary : 45000.0
+HRA : 9000.0
+DA : 4500.0
+Bonus : 2250.0
+Net Salary : 60750.0
+Updated Date : 2026-10-05
 ________________________________________
 
 3. ID : 103 - Rahul - Testing

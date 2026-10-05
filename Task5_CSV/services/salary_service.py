@@ -18,7 +18,7 @@ class SalaryService:
     def calculate_net_salary(self,basic_salary: float,hra: float,da: float,bonus: float) -> float:
         return basic_salary + hra + da + bonus
 
-    def add_salary(self, employee_id: int, basic_salary: float) -> dict:
+    async def add_salary(self, employee_id: int, basic_salary: float) -> dict:
         if basic_salary <= 0:
             raise InvalidSalaryError("Salary must be greater than zero.")
 
@@ -37,5 +37,5 @@ class SalaryService:
             "updated_date": date.today().isoformat()
         }
 
-        self.salary_repository.add(salary_data)
+        await self.salary_repository.add(salary_data)
         return salary_data

@@ -50,7 +50,7 @@ async def main():
                     await employee_service.check_employee(employee_id)
 
                     basic_salary = float(input("Enter basic salary: "))
-                    salary = salary_service.add_salary(employee_id,basic_salary)
+                    salary = await salary_service.add_salary(employee_id,basic_salary)
                     print(f"HRA : {salary['hra']}")
                     print(f"DA : {salary['da']}")
                     print(f"Bonus : {salary['bonus']}")
