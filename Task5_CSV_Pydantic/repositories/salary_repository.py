@@ -43,6 +43,6 @@ class SalaryRepository:
             writer.writeheader()
             # writer.writerows(salary_data)
             for salary in salary_data:
-                writer.writerow(salary.model_dump(mode="json"))
+                writer.writerow(salary.model_dump())
 
 

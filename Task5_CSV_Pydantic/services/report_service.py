@@ -23,7 +23,7 @@ class ReportService:
 
             for salary in salaries:
                 if employee.employee_id == salary.employee_id:
-                    if (latest_salary is None or salary.updated_date > latest_salary["updated_date"]):
+                    if (latest_salary is None or salary.updated_date > latest_salary.updated_date):
                         latest_salary = salary
 
             if latest_salary:
