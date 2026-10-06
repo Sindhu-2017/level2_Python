@@ -12,4 +12,4 @@ class EmployeeService:
         employees = await self.get_employees()
 
         if not any(employee.employee_id == employee_id for employee in employees):
-            raise EmployeeNotFoundError("Employee ID does not exist")
+            raise EmployeeNotFoundError(employee_id)
