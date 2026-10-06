@@ -2,6 +2,7 @@ import csv
 import asyncio
 from exceptions.custom_exceptions import DataFileError
 from models.salary_model import Salary
+from pydantic import ValidationError
 class SalaryRepository:
 
     def __init__(self, salary_file):
@@ -24,6 +25,8 @@ class SalaryRepository:
 
         except FileNotFoundError:
             raise DataFileError("Salary file not found.")
+        except ValidationError as e:
+                print(e.errors())
 
     async def add(self, new_salary: dict) -> None:
         salary_data = await self.get_all()
@@ -44,5 +47,6 @@ class SalaryRepository:
             # writer.writerows(salary_data)
             for salary in salary_data:
                 writer.writerow(salary.model_dump())
+            
 
 

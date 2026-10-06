@@ -2,6 +2,7 @@ import csv
 import asyncio
 from exceptions.custom_exceptions import DataFileError
 from models.employee_model import Employee
+from pydantic import ValidationError
 class EmployeeRepository:
 
     def __init__(self, employee_file):
@@ -21,3 +22,5 @@ class EmployeeRepository:
 
         except FileNotFoundError:
             raise DataFileError("Employee file not found.")
+        except ValidationError as e:
+            print(e.errors())
