@@ -18,6 +18,6 @@ class EmployeeRepository:
                 return employees
 
         except FileNotFoundError:
-            raise DataFileError("Employee file not found.")
+            raise DataFileError(self.employee_file)
         except ValidationError as e:
             print(e.errors())

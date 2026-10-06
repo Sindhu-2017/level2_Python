@@ -16,7 +16,7 @@ class SalaryRepository:
                 return salaries
 
         except FileNotFoundError:
-            raise DataFileError("Salary file not found.")
+            raise DataFileError(self.salary_file)
         except ValidationError as e:
                 print(e.errors())
 

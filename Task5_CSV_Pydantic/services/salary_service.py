@@ -21,7 +21,7 @@ class SalaryService:
 
     async def add_salary(self, employee_id: int, basic_salary: float) -> dict:
         if basic_salary <= 0:
-            raise InvalidSalaryError("Salary must be greater than zero.")
+            raise InvalidSalaryError(basic_salary)
 
         hra = self.calculate_hra(basic_salary)
         da = self.calculate_da(basic_salary)
