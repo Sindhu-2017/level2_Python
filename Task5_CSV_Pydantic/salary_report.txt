@@ -2,11 +2,11 @@
 1. ID : 101 - Arun - QA
 Designation : QA Engineer
 Experience : 2
-Basic Salary : 26000.0
-HRA : 5200.0
-DA : 2600.0
-Bonus : 1300.0
-Net Salary : 35100.0
+Basic Salary : 65000.0
+HRA : 13000.0
+DA : 6500.0
+Bonus : 3250.0
+Net Salary : 87750.0
 Updated Date : 2026-10-06
 ________________________________________
 

@@ -28,16 +28,6 @@ class SalaryService:
         bonus = self.calculate_bonus(basic_salary)
 
         net_salary = self.calculate_net_salary(basic_salary,hra,da,bonus)
-        # salary_data = {
-        #     "employee_id": employee_id,
-        #     "basic_salary": basic_salary,
-        #     "hra": hra,
-        #     "da": da,
-        #     "bonus": bonus,
-        #     "net_salary": net_salary,
-        #     "updated_date": date.today().isoformat()
-        # }
-
         salary_data = Salary(
             employee_id=employee_id,
             basic_salary=basic_salary,

@@ -39,7 +39,6 @@ class EmployeeOperations:
 
     # checking salary condition
     def check_salary_condition(self) -> None:
-        # salaries = [employee["net_salary"] for employee in self.employees]
         salaries=list(map(lambda employee:employee.net_salary,self.employees))
 
         print("All employees have salary above 30000:",all(salary > 30000 for salary in salaries))

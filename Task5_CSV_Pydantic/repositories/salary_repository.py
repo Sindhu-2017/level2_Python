@@ -12,14 +12,6 @@ class SalaryRepository:
         try:
             with open(self.salary_file, "r", newline="") as file:
                 salaries = list(csv.DictReader(file))
-
-                # for salary in salaries:
-                #     salary["employee_id"] = int(salary["employee_id"])
-                #     salary["basic_salary"] = float(salary["basic_salary"])
-                #     salary["hra"] = float(salary["hra"])
-                #     salary["da"] = float(salary["da"])
-                #     salary["bonus"] = float(salary["bonus"])
-                #     salary["net_salary"] = float(salary["net_salary"])
                 salaries = [Salary(**salary) for salary in salaries]
                 return salaries
 
@@ -44,7 +36,6 @@ class SalaryRepository:
         with open(self.salary_file,"w",newline="") as file:
             writer = csv.DictWriter(file,fieldnames=fieldnames)
             writer.writeheader()
-            # writer.writerows(salary_data)
             for salary in salary_data:
                 writer.writerow(salary.model_dump())
             

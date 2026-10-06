@@ -14,9 +14,6 @@ class EmployeeRepository:
             with open(self.employee_file, "r", newline="") as file:
                 employees = list(csv.DictReader(file))
 
-                # for employee in employees:
-                #     employee["employee_id"] = int(employee["employee_id"])
-                #     employee["experience"] = int(employee["experience"])
                 employees = [Employee(**employee) for employee in employees]
                 return employees
 
