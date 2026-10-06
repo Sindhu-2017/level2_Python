@@ -13,12 +13,12 @@ ________________________________________
 2. ID : 102 - Priya - Development
 Designation : Python Developer
 Experience : 3
-Basic Salary : 40000.0
-HRA : 8000.0
-DA : 4000.0
-Bonus : 2000.0
-Net Salary : 54000.0
-Updated Date : 2026-09-28
+Basic Salary : 23000.0
+HRA : 4600.0
+DA : 2300.0
+Bonus : 1150.0
+Net Salary : 31050.0
+Updated Date : 2026-10-05
 ________________________________________
 
 3. ID : 103 - Rahul - Testing
@@ -46,10 +46,10 @@ ________________________________________
 5. ID : 105 - Karthik M - Development
 Designation : Backend Developer
 Experience : 5
-Basic Salary : 23000.0
-HRA : 4600.0
-DA : 2300.0
-Bonus : 1150.0
-Net Salary : 31050.0
-Updated Date : 2026-10-04
+Basic Salary : 46000.0
+HRA : 9200.0
+DA : 4600.0
+Bonus : 2300.0
+Net Salary : 62100.0
+Updated Date : 2026-10-06
 ________________________________________
