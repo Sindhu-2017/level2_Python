@@ -1,0 +1,113 @@
+2026-10-08 15:34:45,289 - INFO - __main__ - Employee Management System started
+2026-10-08 15:34:57,998 - INFO - __main__ - User selected option: 1
+2026-10-08 15:34:57,998 - INFO - __main__ - Displaying employees
+2026-10-08 15:36:06,489 - INFO - __main__ - User selected option: 12
+2026-10-08 15:36:06,490 - INFO - __main__ - Employee Management System stopped
+2026-10-08 15:37:30,733 - INFO - __main__ - Employee Management System started
+2026-10-08 15:37:34,263 - INFO - __main__ - User selected option: 1
+2026-10-08 15:37:34,263 - INFO - __main__ - Displaying employees
+2026-10-08 16:12:04,281 - INFO - __main__ - User selected option: 12
+2026-10-08 16:12:04,281 - INFO - __main__ - Employee Management System stopped
+2026-10-08 16:12:07,144 - INFO - __main__ - Employee Management System started
+2026-10-08 16:12:08,697 - INFO - __main__ - User selected option: 1
+2026-10-08 16:12:08,697 - INFO - __main__ - Displaying employees
+2026-10-08 16:12:08,697 - INFO - services.employee_service - Fetching employees
+2026-10-08 16:12:08,698 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:08,700 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:16,818 - INFO - __main__ - User selected option: 2
+2026-10-08 16:12:16,819 - INFO - __main__ - Adding new salary record
+2026-10-08 16:12:18,497 - INFO - services.employee_service - Checking employee ID: 103
+2026-10-08 16:12:18,497 - INFO - services.employee_service - Fetching employees
+2026-10-08 16:12:18,498 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:18,500 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:21,403 - INFO - repositories.salary_repository - Adding salary record for employee 103
+2026-10-08 16:12:21,403 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:21,407 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:21,410 - INFO - repositories.salary_repository - Salary record saved successfully for employee 103
+2026-10-08 16:12:21,410 - INFO - __main__ - Salary added successfully for employee 103
+2026-10-08 16:12:22,910 - INFO - __main__ - User selected option: 3
+2026-10-08 16:12:22,910 - INFO - __main__ - Finding highest salary employee
+2026-10-08 16:12:22,910 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:22,911 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:22,912 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:22,913 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:22,916 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:43,750 - INFO - __main__ - User selected option: 4
+2026-10-08 16:12:43,751 - INFO - __main__ - Generating salary report
+2026-10-08 16:12:43,751 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:43,751 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:43,753 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:43,753 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:43,754 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:45,797 - INFO - __main__ - User selected option: 5
+2026-10-08 16:12:45,797 - INFO - __main__ - Displaying departments
+2026-10-08 16:12:45,797 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:45,797 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:45,799 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:45,799 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:45,800 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:49,358 - INFO - __main__ - User selected option: 6
+2026-10-08 16:12:49,358 - INFO - __main__ - Sorting employees by experience
+2026-10-08 16:12:49,358 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:49,358 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:49,360 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:49,360 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:49,361 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:50,696 - INFO - __main__ - User selected option: 7
+2026-10-08 16:12:50,697 - INFO - __main__ - Sorting employees by experience
+2026-10-08 16:12:50,697 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:50,697 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:50,698 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:50,699 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:50,700 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:52,076 - INFO - __main__ - User selected option: 8
+2026-10-08 16:12:54,771 - INFO - __main__ - Searching employees in department: QA
+2026-10-08 16:12:54,771 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:54,771 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:54,772 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:54,773 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:54,774 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:12:56,876 - INFO - __main__ - User selected option: 9
+2026-10-08 16:12:58,755 - INFO - __main__ - Searching employees with experience >= 3
+2026-10-08 16:12:58,756 - INFO - services.report_service - Generating salary report
+2026-10-08 16:12:58,756 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:12:58,757 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:12:58,758 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:12:58,759 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:13:01,892 - INFO - __main__ - User selected option: 10
+2026-10-08 16:13:01,892 - INFO - __main__ - Checking salary conditions
+2026-10-08 16:13:01,892 - INFO - services.report_service - Generating salary report
+2026-10-08 16:13:01,893 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:13:01,894 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:13:01,894 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:13:01,896 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:13:02,968 - INFO - __main__ - User selected option: 11
+2026-10-08 16:13:02,968 - INFO - __main__ - Downloading salary report
+2026-10-08 16:13:02,968 - INFO - services.report_service - Generating salary report
+2026-10-08 16:13:02,969 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:13:02,970 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:13:02,970 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:13:02,972 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:13:02,972 - INFO - services.report_service - Saving salary report to D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\salary_report.txt
+2026-10-08 16:13:02,974 - INFO - __main__ - Salary report saved successfully
+2026-10-08 16:13:06,909 - INFO - __main__ - User selected option: 12
+2026-10-08 16:13:06,909 - INFO - __main__ - Employee Management System stopped
+2026-10-08 16:13:36,906 - INFO - __main__ - Employee Management System started
+2026-10-08 16:13:43,890 - INFO - __main__ - User selected option: 8
+2026-10-08 16:13:45,907 - INFO - __main__ - Searching employees in department: 3
+2026-10-08 16:13:45,907 - INFO - services.report_service - Generating salary report
+2026-10-08 16:13:45,907 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:13:45,909 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:13:45,910 - INFO - repositories.salary_repository - Reading salary data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\salary.csv
+2026-10-08 16:13:45,911 - INFO - repositories.salary_repository - Salary records validated successfully
+2026-10-08 16:13:45,911 - WARNING - __main__ - No employees found in department: 3
+2026-10-08 16:14:12,055 - INFO - __main__ - User selected option: 2
+2026-10-08 16:14:12,055 - INFO - __main__ - Adding new salary record
+2026-10-08 16:14:13,411 - INFO - services.employee_service - Checking employee ID: 109
+2026-10-08 16:14:13,411 - INFO - services.employee_service - Fetching employees
+2026-10-08 16:14:13,411 - INFO - repositories.employee_repository - Reading employee data from D:\SINDHUJA\Level 2\Python\Task5_CSV_Pydantic2\data\employee.csv
+2026-10-08 16:14:13,413 - INFO - repositories.employee_repository - Employee records validated successfully
+2026-10-08 16:14:13,413 - WARNING - services.employee_service - Employee ID 109 was not found
+2026-10-08 16:14:13,413 - WARNING - __main__ - Employee not found: 109
+2026-10-08 16:14:29,225 - INFO - __main__ - User selected option: 12
+2026-10-08 16:14:29,225 - INFO - __main__ - Employee Management System stopped
