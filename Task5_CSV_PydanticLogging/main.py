@@ -10,7 +10,6 @@ from utilities.employee_operations import EmployeeOperations
 from exceptions.custom_exceptions import (EmployeeNotFoundError,InvalidSalaryError,DataFileError)
 import asyncio
 import logging
-import logger
 
 logger = logging.getLogger(__name__)
 
