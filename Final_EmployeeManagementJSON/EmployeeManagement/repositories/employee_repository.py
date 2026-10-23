@@ -5,6 +5,7 @@ class EmployeeRepository:
     def __init__(self, employee_file):
         self.employee_file = employee_file
 
+    # getting all the employees
     def get_all(self) -> list[dict]:
         try:
             with open(self.employee_file, "r") as file:

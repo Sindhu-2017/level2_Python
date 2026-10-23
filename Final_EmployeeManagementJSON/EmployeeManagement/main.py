@@ -9,10 +9,11 @@ from utilities.employee_operations import EmployeeOperations
 
 from exceptions.custom_exceptions import (EmployeeNotFoundError,InvalidSalaryError,DataFileError)
 
-
+# creating objects dor repositories
 employee_repository = EmployeeRepository(EMPLOYEE_FILE)
 salary_repository = SalaryRepository(SALARY_FILE)
 
+# creating object for services
 employee_service = EmployeeService(employee_repository)
 salary_service = SalaryService(salary_repository)
 report_service = ReportService(employee_repository,salary_repository)

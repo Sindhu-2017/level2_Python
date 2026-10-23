@@ -5,6 +5,7 @@ class ReportService:
         self.employee_repository = employee_repository
         self.salary_repository = salary_repository
 
+    # report
     def get_report(self) -> list[dict]:
         employees = self.employee_repository.get_all()
         salaries = self.salary_repository.get_all()
@@ -37,8 +38,8 @@ class ReportService:
         return reports
 
 
+    # saving report in text document
     def save_report(self, reports):
-
         with open(REPORT_FILE, "w") as file:
 
             for number, report in enumerate(reports, start=1):

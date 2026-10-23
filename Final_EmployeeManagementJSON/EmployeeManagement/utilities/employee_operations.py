@@ -1,6 +1,6 @@
 class EmployeeOperations:
+    
     def __init__(self,employees: list[dict]):
-
         self.employees = employees
 
     # displaying employees

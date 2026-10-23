@@ -18,6 +18,7 @@ class SalaryService:
     def calculate_net_salary(self,basic_salary: float,hra: float,da: float,bonus: float) -> float:
         return basic_salary + hra + da + bonus
 
+    # adding new salary record
     def add_salary(self, employee_id: int, basic_salary: float) -> dict:
         if basic_salary <= 0:
             raise InvalidSalaryError("Salary must be greater than zero.")

@@ -46,10 +46,10 @@ ________________________________________
 5. ID : 105 - Karthik M - Development
 Designation : Backend Developer
 Experience : 5
-Basic Salary : 50000
-HRA : 8000
-DA : 5000
-Bonus : 5000
-Net Salary : 68000
-Updated Date : 2026-09-25
+Basic Salary : 56000.0
+HRA : 11200.0
+DA : 5600.0
+Bonus : 2800.0
+Net Salary : 75600.0
+Updated Date : 2026-10-23
 ________________________________________
